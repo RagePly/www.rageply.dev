@@ -46,7 +46,7 @@ case "$1" in
             git commit -m "deploy $(date)" &&
             git checkout master &&
             echo "done" ||
-            echo "aborting due to errors"
+            echo "aborting due to errors, DO NOT RUN AGAIN without checking git status in BOTH master and prod"
         ;;
     build-release)
         build_site docs

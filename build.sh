@@ -8,6 +8,7 @@ function exit_usage() {
 
 function build_site() {
     mkdir -p "$1" &&
+    touch "$1/.nojekyll" &&
     mkdir -p "$1/images" &&
         python3 compilehtml.py "$1" &&
         cp src/css/* "$1" &&

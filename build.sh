@@ -39,13 +39,14 @@ case "$1" in
         serve_local _out
         ;;
     deploy)
-        if git checkout prod && git merge master && build_site docs; then 
-            git checkout master
-            echo "prod is ready to merge with origin"
-            echo "git checkout prod; git push; git checkout master"
-        else
+        git checkout prod &&
+            git merge master && 
+            build_site docs &&
+            git add docs &&
+            git commit docs "deploy $(date)" &&
+            git checkout master &&
+            echo "done" ||
             echo "aborting due to errors"
-        fi
         ;;
     build-release)
         build_site docs

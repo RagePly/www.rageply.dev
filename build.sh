@@ -2,7 +2,7 @@
 
 
 function exit_usage() {
-    echo "usage: ./build.sh {serve|deploy}"
+    echo "usage: ./build.sh {serve|deploy|build-release}"
     exit 1
 }
 
@@ -46,6 +46,9 @@ case "$1" in
         else
             echo "aborting due to errors"
         fi
+        ;;
+    build-release)
+        build_site docs
         ;;
     *)
         exit_usage

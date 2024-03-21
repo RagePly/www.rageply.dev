@@ -39,8 +39,13 @@ case "$1" in
         serve_local _out
         ;;
     deploy)
-        echo "not implemented!"
-        exit 1
+        if git checkout prod && git merge master && build_site docs; then 
+            git checkout master
+            echo "prod is ready to merge with origin"
+            echo "git checkout prod; git push; git checkout master"
+        else
+            echo "aborting due to errors"
+        fi
         ;;
     *)
         exit_usage

@@ -41,7 +41,7 @@ case "$1" in
         ;;
     deploy)
         git checkout prod &&
-            git merge master && 
+            git merge -m "merge updates from source" master && 
             build_site docs &&
             git add docs &&
             git commit -m "deploy $(date)" &&

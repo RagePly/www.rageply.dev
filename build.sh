@@ -44,6 +44,7 @@ case "$1" in
             build_site docs &&
             git add docs &&
             git commit -m "deploy $(date)" &&
+            git push &&
             git checkout master &&
             echo "done" ||
             echo "aborting due to errors, DO NOT RUN AGAIN without checking git status in BOTH master and prod"

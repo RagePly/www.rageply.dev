@@ -43,7 +43,7 @@ case "$1" in
             git merge master && 
             build_site docs &&
             git add docs &&
-            git commit docs "deploy $(date)" &&
+            git commit -m "deploy $(date)" &&
             git checkout master &&
             echo "done" ||
             echo "aborting due to errors"
